@@ -1,8 +1,8 @@
-import React, {useRef, useLayoutEffect, createElement} from "react";
+import React, {useRef, useLayoutEffect, createElement, HTMLAttributes} from "react";
 
 type TagName = "span" | "div" | "p" | "a" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLElement> {
     children: string;
     fontSizeMin: number;
     fontSizeMax: number;
@@ -16,7 +16,8 @@ const ControlledText: React.FC<Partial<Props>> = props => {
         fontSizeMin = 10,
         fontSizeMax = 16,
         className = "react-controlled-text",
-        tagName = "span"
+        tagName = "span",
+        ...otherProps
     } = props;
 
     const textContainerRef = useRef(null);
@@ -34,7 +35,7 @@ const ControlledText: React.FC<Partial<Props>> = props => {
         }
     }, [fontSizeMin]);
 
-    const elementProps = {ref: textContainerRef, className};
+    const elementProps = {ref: textContainerRef, className, ...otherProps};
 
     return createElement(tagName, elementProps, children);
 };
