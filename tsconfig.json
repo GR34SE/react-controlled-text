@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "noImplicitAny": false,
+    "module": "esnext",
+    "target": "es6",
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ],
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "allowJs": true,
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "downlevelIteration": true
+  },
+  "include": ["./src"],
+  "exclude": ["node_modules", "dist"]
+}
