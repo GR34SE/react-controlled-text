@@ -1,4 +1,5 @@
-import React, {useRef, useLayoutEffect, createElement, HTMLAttributes} from "react";
+import React, {useRef, useLayoutEffect, useCallback, createElement, HTMLAttributes} from "react";
+import {debounce} from "./utils/debounce";
 
 type TagName = "span" | "div" | "p" | "a" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
@@ -8,6 +9,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
     fontSizeMax: number;
     className: string;
     tagName: TagName;
+    resizeThrottle: number;
 }
 
 const ControlledText: React.FC<Partial<Props>> = props => {
@@ -17,23 +19,36 @@ const ControlledText: React.FC<Partial<Props>> = props => {
         fontSizeMax = 16,
         className = "react-controlled-text",
         tagName = "span",
+        resizeThrottle = 250,
         ...otherProps
     } = props;
 
     const textContainerRef = useRef(null);
     const fontSizeRef = useRef(fontSizeMax);
 
-    useLayoutEffect(() => {
-        const isFontSizeDecrementNeeded = (): boolean =>
+    const isFontSizeDecrementNeeded = useCallback((): boolean => {
+        return (
             fontSizeRef.current > fontSizeMin &&
             (textContainerRef.current.scrollHeight > textContainerRef.current.clientHeight ||
-                textContainerRef.current.scrollWidth > textContainerRef.current.clientWidth);
+                textContainerRef.current.scrollWidth > textContainerRef.current.clientWidth)
+        );
+    }, [fontSizeMin]);
 
+    const handleResizeToFit = useCallback((): void => {
         while (isFontSizeDecrementNeeded()) {
             fontSizeRef.current--;
             textContainerRef.current.style.fontSize = fontSizeRef.current + "px";
         }
-    }, [fontSizeMin]);
+    }, [isFontSizeDecrementNeeded]);
+
+    useLayoutEffect((): (() => void) => {
+        handleResizeToFit();
+
+        const debouncedHandleResizeToFit = debounce(handleResizeToFit, resizeThrottle);
+        window.addEventListener("resize", debouncedHandleResizeToFit);
+
+        return (): void => window.removeEventListener("resize", debouncedHandleResizeToFit);
+    }, [handleResizeToFit, resizeThrottle]);
 
     const elementProps = {ref: textContainerRef, className, ...otherProps};
 

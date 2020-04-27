@@ -27,5 +27,6 @@ import Text from "react-controlled-text";
 | fontSizeMax                | number                  | 16                      | no        | Maximum font size                                                            |
 | className                  | string                  | "react-controlled-text" | no        | className that output tag will receive                                       |
 | tagName                    | TagName (string)        | "span"                  | no        | One of: "span" | "div" | "p" | "a" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" |
+| resizeThrottle             | number                  | 250                     | no        | Number of milliseconds to throttle window resize callback                    |
 
 You can also pass other common HTML props such as onClick directly to the Text component.
