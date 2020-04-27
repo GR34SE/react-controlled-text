@@ -4,7 +4,11 @@ module.exports = {
     env: {
         browser: true
     },
-    extends: ["plugin:@typescript-eslint/recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
+    extends: [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended"
+    ],
     parserOptions: {
         project: ["tsconfig.json"],
         tsconfigRootDir: __dirname,

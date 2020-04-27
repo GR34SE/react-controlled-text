@@ -1,7 +1,7 @@
 {
   "name": "react-controlled-text",
-  "description": "Utility rich Text component for React 16",
-  "version": "1.0.0",
+  "description": "Utility rich Text component for React ⚛️",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/GR34SE/react-controlled-text.git",
@@ -25,10 +25,22 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
     "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "typescript": "^3.8.3"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
-  }
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "keywords": [
+    "react",
+    "resize",
+    "text",
+    "fit",
+    "scale"
+  ]
 }
