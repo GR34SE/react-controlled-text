@@ -2,7 +2,8 @@ module.exports = {
     parser: "@typescript-eslint/parser",
     plugins: ["@typescript-eslint", "react", "react-hooks", "eslint-plugin-import", "prettier"],
     env: {
-        browser: true
+        browser: true,
+        jest: true
     },
     extends: [
         "plugin:@typescript-eslint/recommended",

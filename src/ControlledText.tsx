@@ -28,6 +28,7 @@ const ControlledText: React.FC<Partial<Props>> = props => {
 
     const isFontSizeDecrementNeeded = useCallback((): boolean => {
         return (
+            textContainerRef.current &&
             fontSizeRef.current > fontSizeMin &&
             (textContainerRef.current.scrollHeight > textContainerRef.current.clientHeight ||
                 textContainerRef.current.scrollWidth > textContainerRef.current.clientWidth)
@@ -50,7 +51,12 @@ const ControlledText: React.FC<Partial<Props>> = props => {
         return (): void => window.removeEventListener("resize", debouncedHandleResizeToFit);
     }, [handleResizeToFit, resizeThrottle]);
 
-    const elementProps = {ref: textContainerRef, className, ...otherProps};
+    const elementProps = {
+        ref: textContainerRef,
+        className,
+        "data-testid": "controlledTextNode",
+        ...otherProps
+    };
 
     return createElement(tagName, elementProps, children);
 };
