@@ -22,7 +22,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
     disableTextClamp: boolean;
 }
 
-const ControlledText: React.FC<Partial<Props>> = props => {
+const ControlledText: React.FC<Partial<Props>> = (props) => {
     const {
         children,
         fontSizeMin = 10,

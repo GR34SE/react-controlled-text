@@ -6,5 +6,11 @@
   "singleQuote": false,
   "bracketSpacing": false,
   "jsxBracketSameLine": false,
-  "arrowParens": "avoid"
+  "arrowParens": "always",
+  "endOfLine": "auto",
+  "jsxSingleQuote": false,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "useTabs": false,
+  "htmlWhitespaceSensitivity": "css"
 }
