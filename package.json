@@ -1,7 +1,7 @@
 {
   "name": "react-controlled-text",
-  "description": "Utility rich Text component for React ⚛️",
-  "version": "0.1.1",
+  "description": "Multiline text clamp and scale to fit component for React ⚛️",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/GR34SE/react-controlled-text.git",
